@@ -9,10 +9,11 @@ import {
   RightNavbar,
 } from "./App.styles";
 //components
+import Cart from "./components/Cart/Cart";
+import Item from "./components/Item/Item";
+//mui
 import { Badge, Grid, LinearProgress, Drawer } from "@mui/material";
 import { AddShoppingCart } from "@mui/icons-material";
-import Item from "./components/Item/Item";
-import Cart from "./components/Cart/Cart";
 
 export type CartItemType = {
   id: number;
@@ -69,9 +70,12 @@ const App = () => {
     );
   };
 
-  const closeCart = () => {
-    setCartOpen(false);
+  const checkout = () => {
+    alert("Checkout your cart!");
+    setCartItems([]);
   };
+
+  const closeCart = () => setCartOpen(false);
 
   if (isLoading) return <LinearProgress />;
   if (error) return <h1>!Error...</h1>;
@@ -79,11 +83,7 @@ const App = () => {
   return (
     <Wrapper>
       <Navbar>
-        <RightNavbar>
-          <li>Home</li>
-          <li className="on">Product</li>
-          <li>Contact</li>
-        </RightNavbar>
+        <RightNavbar>Shopping Cart TS</RightNavbar>
 
         <StyledButton onClick={() => setCartOpen(true)}>
           <Badge badgeContent={getTotalItems(cartItems)} color="error">
@@ -93,10 +93,11 @@ const App = () => {
       </Navbar>
       <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
         <Cart
-          cartItem={cartItems}
+          cartItems={cartItems}
           addToCart={handleAddToCart}
           removeFromCart={handleRemoveFromCart}
           closeCart={closeCart}
+          checkout={checkout}
         />
       </Drawer>
       <Container>

@@ -10,6 +10,8 @@ export const Container = styled.div`
 export const StyledButton = styled(IconButton)`
   font-size: 1.2rem;
   margin-right: 20px;
+  width: 50px;
+  height: 50px;
 `;
 
 export const Navbar = styled.div`
@@ -26,15 +28,5 @@ export const RightNavbar = styled.ul`
   display: flex;
   align-items: center;
   margin-left: 20px;
-
-  li {
-    color: #333;
-    list-style-type: none;
-    margin-right: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    &:hover {
-      transform: translateY(-1px);
-    }
-  }
+  font-weight: 700;
 `;

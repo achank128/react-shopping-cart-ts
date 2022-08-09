@@ -15,8 +15,8 @@ export const TotalContainer = styled.div`
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
-  button {
+  /* button {
     background-color: lightblue;
     color: #333;
-  }
+  } */
 `;

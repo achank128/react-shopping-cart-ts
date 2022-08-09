@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
     margin-top: 20px;
   }
   img {
-    height: 80px;
+    width: 100px;
     object-fit: cover;
     margin: 40px 0 0 40px;
   }

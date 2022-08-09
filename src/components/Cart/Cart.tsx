@@ -1,22 +1,24 @@
 import React from "react";
 import { Wrapper, TotalContainer } from "./Cart.styles";
-import { CartItemType } from "../../App";
 import CartItem from "../CartItem/CartItem";
 import { Close } from "@mui/icons-material";
 import { Button } from "@mui/material";
+import { CartItemType } from "../../App";
 
 type Props = {
-  cartItem: CartItemType[];
+  cartItems: CartItemType[];
   addToCart: (clickedItem: CartItemType) => void;
   removeFromCart: (id: number) => void;
   closeCart: () => void;
+  checkout: () => void;
 };
 
 const Cart: React.FC<Props> = ({
-  cartItem,
+  cartItems,
   addToCart,
   removeFromCart,
   closeCart,
+  checkout,
 }) => {
   const calculateTotal = (items: CartItemType[]) =>
     items.reduce((ack: number, item) => ack + item.amount * item.price, 0);
@@ -26,8 +28,8 @@ const Cart: React.FC<Props> = ({
         <Close />
       </span>
       <h2>Your Shopping Cart</h2>
-      {cartItem.length === 0 ? <p>No items in cart.</p> : null}
-      {cartItem.map((item) => (
+      {cartItems.length === 0 ? <p>No items in cart.</p> : null}
+      {cartItems.map((item) => (
         <CartItem
           key={item.id}
           item={item}
@@ -36,8 +38,13 @@ const Cart: React.FC<Props> = ({
         />
       ))}
       <TotalContainer>
-        <h3>Total: ${calculateTotal(cartItem).toFixed(2)}</h3>
-        <Button size="small" disableElevation variant="contained">
+        <h3>Total: ${calculateTotal(cartItems).toFixed(2)}</h3>
+        <Button
+          size="small"
+          disableElevation
+          variant="contained"
+          onClick={checkout}
+        >
           Checkout Now
         </Button>
       </TotalContainer>
